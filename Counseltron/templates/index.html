@@ -1,0 +1,74 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <link rel="icon" href="static/home.png" type="image/icon type">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counseltron</title>
+    <link rel="stylesheet" href="static/styles.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="#home"><img src="static/home.png" alt="Home" style="height: 70px; width: 70px;"></a>
+        <a href="#about"><b>Counseltron</b></a>
+      </nav>
+    </header>
+    <h1>Hi! I'm Counseltron, Your AI <span id="element"></span></h1>
+    <div id="chatbox">
+      <div id="conversation"></div>
+      <form id="chat-form">
+        <input type="text" id="message" placeholder="Type a message" required>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+      var typed = new Typed('#element', {
+        strings: ["counsellor", "buddy", "friend", "helper"],
+        typeSpeed: 100,
+        backSpeed: 50,
+      });
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        const conversation = document.getElementById('conversation');
+        const welcomeMessage = document.createElement('div');
+        welcomeMessage.className = 'bot-response';
+        welcomeMessage.textContent = 'Hi, I am Counseltron, your AI counsellor.';
+        conversation.appendChild(welcomeMessage);
+        conversation.scrollTop = conversation.scrollHeight; 
+      });
+
+      const form = document.getElementById('chat-form');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const messageInput = document.getElementById('message');
+        const message = messageInput.value;
+        const response = await fetch('/predict', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ message: message })
+        });
+        const data = await response.json();
+        const conversation = document.getElementById('conversation');
+        
+        // User message
+        const userPara = document.createElement('div');
+        userPara.className = 'user-message';
+        userPara.textContent = message;
+        conversation.appendChild(userPara);
+
+        // Bot response
+        const botPara = document.createElement('div');
+        botPara.className = 'bot-response';
+        botPara.textContent = data.answer;
+        conversation.appendChild(botPara);
+
+        messageInput.value = '';
+        conversation.scrollTop = conversation.scrollHeight; 
+      });
+    </script>
+  </body>
+  </html>
