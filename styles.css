@@ -93,7 +93,6 @@ body {
 
 .hero-text {
     flex: 1;
-    animation: slideInLeft 1s ease-out;
     padding-left: 4rem;
 }
 
@@ -490,6 +489,155 @@ body {
     }
     
     .desktop-text {
+        display: none;
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Nav Hover Effect */
+.nav-links a {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Social Links */
+.social-links {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #007bff;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    animation: bounce 2s infinite;
+}
+
+.mouse {
+    width: 26px;
+    height: 42px;
+    border: 2px solid #333;
+    border-radius: 15px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.mouse::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 8px;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    background: #333;
+    border-radius: 2px;
+    animation: scroll 1.5s infinite;
+}
+
+/* Project Cards Enhancement */
+.project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0,123,255,0.1), rgba(0,123,255,0));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: #f8f9fa;
+    margin-top: 4rem;
+}
+
+footer .fa-heart {
+    color: #ff4136;
+    animation: heartbeat 1.5s infinite;
+}
+
+/* Animations */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes scroll {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, 10px);
+        opacity: 0;
+    }
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive Design Improvements */
+@media (max-width: 768px) {
+    .social-links {
+        margin-top: 1.5rem;
+    }
+    
+    .scroll-indicator {
         display: none;
     }
 }

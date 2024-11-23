@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
@@ -21,21 +22,21 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <div class="hero-text">
+            <div class="hero-text" data-aos="fade-right" data-aos-delay="200">
                 <h1><span>Meet </span>Counseltron</h1>
                 <h2>The AI Student Counsellor</h2>
                 <a href="https://github.com/rylena/Counseltron" target="_blank" class="github-link">
                     <i class="fab fa-github"></i>
                 </a>
             </div>
-            <div class="hero-image">
+            <div class="hero-image" data-aos="fade-left" data-aos-delay="400">
                 <img src="Counseltron/static/home.png" alt="Counseltron Logo" class="logo">
             </div>
         </div>
     </section>
 
     <section id="about" class="about">
-        <div class="card about-card">
+        <div class="card about-card" data-aos="fade-right">
             <h2 class="section-title">About Counseltron</h2>
             <p class="desktop-text">
                 Counseltron is an AI-powered chatbot designed to provide personalized guidance and support. Built with a custom large language model (LLM), it offers meaningful interactions and intuitive responses to help users navigate their questions and concerns.
@@ -49,31 +50,31 @@
             </p>
         </div>
 
-        <div class="card">
+        <div class="card" data-aos="fade-left">
             <h2 class="section-title">Technologies</h2>
             <div class="tech-grid">
-                <div class="tech-item">
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="100">
                     <img src="Counseltron/static/py.svg" alt="Python" />
                     <div class="tech-tooltip">
                         <h3>Python</h3>
                         <p>Used to create the chatbot and implement the Large Language Model</p>
                     </div>
                 </div>
-                <div class="tech-item">
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="200">
                     <img src="Counseltron/static/js.svg" alt="JavaScript" />
                     <div class="tech-tooltip">
                         <h3>JavaScript</h3>
                         <p>Helped make the implementation of Python and CSS easier</p>
                     </div>
                 </div>
-                <div class="tech-item">
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="300">
                     <img src="Counseltron/static/html.svg" alt="HTML" />
                     <div class="tech-tooltip">
                         <h3>HTML</h3>
                         <p>Used to build the framework of the site</p>
                     </div>
                 </div>
-                <div class="tech-item">
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="400">
                     <img src="Counseltron/static/css.svg" alt="CSS" />
                     <div class="tech-tooltip">
                         <h3>CSS</h3>
@@ -83,7 +84,7 @@
             </div>
         </div>
 
-        <div class="card learnings-card">
+        <div class="card learnings-card" data-aos="fade-right">
             <h2 class="section-title">What I Learned</h2>
             
             <!-- Desktop version -->
@@ -108,6 +109,14 @@
             </div>
         </div>
     </section>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+      });
+    </script>
 </body>
 </html>
 
