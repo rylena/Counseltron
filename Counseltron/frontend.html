@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counseltron - AI Student Counselor</title>
+    <link rel="stylesheet" href="/Counseltron/style.css">
+</head>
+<body>
+    <div class="container">
+        <img src="/Counseltron/home.png" alt="Counseltron Logo" class="logo">
+        <div class="branding">
+            <div class="brand-title">Counseltron</div>
+            <div class="tagline">The AI counsellor made by students for students</div>
+        </div>
+        <div id="chat"></div>
+        <form id="chat-form">
+            <input type="text" id="message" placeholder="Ask me anything..." autocomplete="off" required />
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script>
+        const chat = document.getElementById('chat');
+        const form = document.getElementById('chat-form');
+        const messageInput = document.getElementById('message');
+
+        function appendMessage(sender, text) {
+            const div = document.createElement('div');
+            div.className = 'message ' + (sender === 'You' ? 'user' : 'ai');
+            if (sender === 'You') {
+                div.innerHTML = `<strong>${sender}:</strong> ${text}`;
+            } else {
+                div.innerHTML = `<img src='/Counseltron/home.png' alt='Counseltron Logo' class='chat-logo' style='vertical-align:middle;width:28px;height:28px;margin-right:8px;border-radius:50%;box-shadow:0 1px 6px #1a73e855;background:#232946;object-fit:contain;'>${text}`;
+            }
+            chat.appendChild(div);
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const message = messageInput.value.trim();
+            if (!message) return;
+            appendMessage('You', message);
+            messageInput.value = '';
+            form.querySelector('button').disabled = true;
+            try {
+                const res = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message })
+                });
+                const data = await res.json();
+                if (data.response) {
+                    appendMessage('Counseltron', data.response);
+                } else {
+                    appendMessage('Counseltron', 'Sorry, something went wrong.');
+                }
+            } catch (err) {
+                appendMessage('Counseltron', 'Error connecting to server.');
+            }
+            form.querySelector('button').disabled = false;
+        });
+    </script>
+</body>
+</html> 
