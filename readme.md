@@ -89,10 +89,3 @@ We welcome contributions! Whether it’s fixing bugs, adding features, or improv
 ## ⭐ Support the Project
 
 If you find this project helpful, please consider giving it a **star** 🌟 — it helps others discover Counseltron and motivates us to keep improving it!
-
----
-
-## 📫 Contact
-
-Feel free to reach out with feedback or ideas:
-📧 your.email@example.com
