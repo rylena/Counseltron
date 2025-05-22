@@ -24,12 +24,17 @@ Follow these simple steps to set up Counseltron on your local machine.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/counseltron.git
-cd counseltron
+git clone https://github.com/rylena/Counseltron.git
+cd Counseltron
 ```
 
 ### 2. Install Python Dependencies
-
+#### RECCOMENDED: make a venv
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+#### Install the dependencies
 Make sure you have Python 3.9+ installed, then run:
 
 ```bash
@@ -55,7 +60,7 @@ ollama pull phi
 Start the server:
 
 ```bash
-python main.py
+python app.py
 ```
 
 Then open your browser and visit `http://localhost:5000` (or whatever port your app runs on).
@@ -84,10 +89,3 @@ We welcome contributions! Whether it’s fixing bugs, adding features, or improv
 ## ⭐ Support the Project
 
 If you find this project helpful, please consider giving it a **star** 🌟 — it helps others discover Counseltron and motivates us to keep improving it!
-
----
-
-## 📫 Contact
-
-Feel free to reach out with feedback or ideas:
-📧 your.email@example.com
